@@ -30,21 +30,26 @@ addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, false);
 addBookToLibrary("Crime and Punishment", "Fyodor Dostoevsky", 671, true);
 addBookToLibrary("The Alchemist", "Paulo Coelho", 208, false);
 
-for (let book of myLibrary) {
-  const tRow = document.createElement("tr");
-  tRow.setAttribute("class", "table-row");
-  const iCell = document.createElement("td");
-  const tCell = document.createElement("td");
-  const aCell = document.createElement("td");
-  const pCell = document.createElement("td");
-  const sCell = document.createElement("td");
+function renderLibrary() {
+  tbody.innerText = "";
+  for (let book of myLibrary) {
+    const tRow = document.createElement("tr");
+    tRow.setAttribute("class", "table-row");
+    const iCell = document.createElement("td");
+    const tCell = document.createElement("td");
+    const aCell = document.createElement("td");
+    const pCell = document.createElement("td");
+    const sCell = document.createElement("td");
 
-  iCell.innerText = `${book.id}`;
-  tCell.innerText = `${book.title}`;
-  aCell.innerText = `${book.author}`;
-  pCell.innerText = `${book.pages}`;
-  sCell.innerText = `${book.isRead}`;
+    iCell.innerText = `${book.id}`;
+    tCell.innerText = `${book.title}`;
+    aCell.innerText = `${book.author}`;
+    pCell.innerText = `${book.pages}`;
+    sCell.innerText = `${book.isRead}`;
 
-  tRow.append(iCell, tCell, aCell, pCell, sCell);
-  tbody.appendChild(tRow);
+    tRow.append(iCell, tCell, aCell, pCell, sCell);
+    tbody.appendChild(tRow);
+  }
 }
+
+renderLibrary();

@@ -10,7 +10,7 @@
   <body>
     <header>
       <h1>TOP - Library</h1>
-      <button>New Book</button>
+      <button id="new-book-btn">New Book</button>
     </header>
 
     <table>
@@ -25,5 +25,28 @@
       </thead>
       <tbody></tbody>
     </table>
+    <dialog id="modal">
+      <form action="">
+        <section>
+          <label for="title"
+            >Title
+            <input type="text" name="title" id="title" />
+          </label>
+        </section>
+        <section>
+          <label for="author"
+            >Author
+            <input type="text" name="author" id="author" />
+          </label>
+        </section>
+        <section>
+          <label for="pages">
+            Pages
+            <input type="number" name="pages" id="pages" />
+          </label>
+        </section>
+        <button type="submit" id="add-btn">Add To Library</button>
+      </form>
+    </dialog>
   </body>
 </html>

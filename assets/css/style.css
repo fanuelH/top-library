@@ -1,0 +1,29 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  margin: 1.5em auto;
+}
+
+tr,
+td {
+  border: 1px solid #1fd5e0;
+  padding: 0.5em;
+}
+
+h1 {
+  padding: 10px;
+  background-color: #1fd5e0;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: lightcyan;
+}

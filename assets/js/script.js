@@ -1,5 +1,7 @@
 const tbody = document.querySelector("tbody");
-
+const newBtn = document.querySelector("#new-book-btn");
+const modal = document.querySelector("#modal");
+const addToLibraryBtn = document.querySelector("#add-btn");
 let myLibrary = [];
 
 function Book(id, title, author, pages, isRead) {
@@ -29,6 +31,10 @@ addBookToLibrary("Brave New World", "Aldous Huxley", 311, true);
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, false);
 addBookToLibrary("Crime and Punishment", "Fyodor Dostoevsky", 671, true);
 addBookToLibrary("The Alchemist", "Paulo Coelho", 208, false);
+
+newBtn.addEventListener("click", () => {
+  modal.showModal();
+});
 
 function renderLibrary() {
   tbody.innerText = "";

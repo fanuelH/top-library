@@ -2,6 +2,11 @@ const tbody = document.querySelector("tbody");
 const newBtn = document.querySelector("#new-book-btn");
 const modal = document.querySelector("#modal");
 const addToLibraryBtn = document.querySelector("#add-btn");
+const form = document.querySelector("form");
+const titleData = document.querySelector("#title");
+const authorData = document.querySelector("#author");
+const pagesData = document.querySelector("#pages");
+
 let myLibrary = [];
 
 function Book(id, title, author, pages, isRead) {
@@ -18,6 +23,14 @@ function addBookToLibrary(title, author, pages, status) {
   let book = new Book(id, title, author, pages, isRead);
   myLibrary.push(book);
 }
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  addBookToLibrary(titleData.value, authorData.value, pagesData.value);
+  renderLibrary();
+  form.reset();
+  modal.close();
+});
 
 addBookToLibrary("The 48 Laws of Human", "Robert Greene", 606, true);
 addBookToLibrary("The Art Of War", "Sun Tzu", 306, false);

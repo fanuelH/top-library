@@ -19,7 +19,7 @@ function Book(id, title, author, pages, isRead) {
 
 function addBookToLibrary(title, author, pages, status) {
   const id = crypto.randomUUID();
-  const isRead = status ? "have read it" : "haven't read it";
+  const isRead = status;
   let book = new Book(id, title, author, pages, isRead);
   myLibrary.push(book);
 }
@@ -62,6 +62,7 @@ function renderLibrary() {
     const dCell = document.createElement("td");
     const deleteBtn = document.createElement("button");
     const toggleBtn = document.createElement("button");
+    toggleBtn.setAttribute("data-status", book.isRead);
     toggleBtn.classList.add("toggle-btn");
     deleteBtn.classList.add("delete-btn");
 
@@ -69,7 +70,9 @@ function renderLibrary() {
     tCell.innerText = `${book.title}`;
     aCell.innerText = `${book.author}`;
     pCell.innerText = `${book.pages}`;
-    toggleBtn.innerText = `${book.isRead}`;
+    toggleBtn.innerText = book.isRead ? "have read it" : "haven't read it";
+    toggleBtn.style.backgroundColor = book.isRead ? "#1fd5e0" : "white";
+    toggleBtn.style.color = book.isRead ? "white" : "#1fd5e0";
 
     sCell.appendChild(toggleBtn);
     dCell.appendChild(deleteBtn);
@@ -80,19 +83,6 @@ function renderLibrary() {
     tRow.append(iCell, tCell, aCell, pCell, sCell, dCell);
     tbody.appendChild(tRow);
   }
-
-  const coloredBtns = document.querySelectorAll(".toggle-btn");
-  coloredBtns.forEach((btn) => {
-    if (btn.innerText === "have read it") {
-      btn.innerText = "haven't read it";
-      btn.style.backgroundColor = "yellow";
-      btn.style.color = "green";
-    } else {
-      btn.style.backgroundColor = "green";
-      btn.innerText = "have read it";
-      btn.style.color = "white";
-    }
-  });
 }
 
 modal.addEventListener("click", (e) => {
@@ -116,14 +106,16 @@ tbody.addEventListener("click", (e) => {
   }
   if (e.target.classList.contains("toggle-btn")) {
     const button = e.target.closest("button");
-    if (button.innerText === "have read it") {
+    if (button.dataset.status === "true") {
       button.innerText = "haven't read it";
-      button.style.backgroundColor = "yellow";
-      button.style.color = "green";
+      button.style.backgroundColor = "white";
+      button.style.color = "#1fd5e0";
+      button.dataset.status = false;
     } else {
-      button.style.backgroundColor = "green";
       button.innerText = "have read it";
+      button.style.backgroundColor = "#1fd5e0";
       button.style.color = "white";
+      button.dataset.status = true;
     }
   }
 });

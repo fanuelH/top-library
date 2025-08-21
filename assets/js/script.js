@@ -1,6 +1,6 @@
 const tbody = document.querySelector("tbody");
 const newBtn = document.querySelector("#new-book-btn");
-const modal = document.querySelector("#modal");
+const modal = document.querySelector("[data-modal]");
 const addToLibraryBtn = document.querySelector("#add-btn");
 const form = document.querySelector("form");
 const titleData = document.querySelector("#title");

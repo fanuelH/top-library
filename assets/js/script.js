@@ -61,15 +61,21 @@ function renderLibrary() {
     const sCell = document.createElement("td");
     const dCell = document.createElement("td");
     const deleteBtn = document.createElement("button");
+    const toggleBtn = document.createElement("button");
+    toggleBtn.classList.add("toggle-btn");
     deleteBtn.classList.add("delete-btn");
 
     iCell.innerText = `${book.id}`;
     tCell.innerText = `${book.title}`;
     aCell.innerText = `${book.author}`;
     pCell.innerText = `${book.pages}`;
-    sCell.innerText = `${book.isRead}`;
+    toggleBtn.innerText = `${book.isRead}`;
+
+    sCell.appendChild(toggleBtn);
     dCell.appendChild(deleteBtn);
+
     deleteBtn.innerText = `delete`;
+
     tRow.setAttribute("data-id", book.id);
     tRow.append(iCell, tCell, aCell, pCell, sCell, dCell);
     tbody.appendChild(tRow);
@@ -94,6 +100,18 @@ tbody.addEventListener("click", (e) => {
     const id = row.dataset.id;
     myLibrary = myLibrary.filter((book) => book.id !== id);
     renderLibrary();
+  }
+  if (e.target.classList.contains("toggle-btn")) {
+    const button = e.target.closest("button");
+    if (button.innerText === "have read it") {
+      button.innerText = "haven't read it";
+      button.style.backgroundColor = "yellow";
+      button.style.color = "green";
+    } else {
+      button.style.backgroundColor = "green";
+      button.innerText = "have read it";
+      button.style.color = "white";
+    }
   }
 });
 

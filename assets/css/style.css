@@ -43,3 +43,50 @@ button:hover {
   background-color: rgba(255, 255, 255, 0.5);
   color: white;
 }
+
+label {
+  margin: 1em;
+  color: #1fd5e0;
+}
+
+input {
+  background-color: rgb(31, 213, 224);
+  color: white;
+  border: none;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: 1px solid #0e949b;
+}
+
+#modal {
+  padding: 1em;
+  border-color: #1fd5e0;
+  margin: 4.3em auto;
+}
+#modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#modal button {
+  color: white;
+  background-color: #1fd5e0;
+  padding: 10px;
+}
+
+#modal button:hover {
+  background-color: rgba(31, 213, 224, 0.5);
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+section {
+  margin: 0.5em;
+}

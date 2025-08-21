@@ -70,7 +70,7 @@ function renderLibrary() {
     sCell.innerText = `${book.isRead}`;
     dCell.appendChild(deleteBtn);
     deleteBtn.innerText = `delete`;
-
+    tRow.setAttribute("data-id", book.id);
     tRow.append(iCell, tCell, aCell, pCell, sCell, dCell);
     tbody.appendChild(tRow);
   }
@@ -85,6 +85,15 @@ modal.addEventListener("click", (e) => {
     e.clientY < dialogDimension.top
   ) {
     modal.close();
+  }
+});
+
+tbody.addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete-btn")) {
+    const row = e.target.closest("tr");
+    const id = row.dataset.id;
+    myLibrary = myLibrary.filter((book) => book.id !== id);
+    renderLibrary();
   }
 });
 

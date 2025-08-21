@@ -62,6 +62,7 @@ function renderLibrary() {
     const dCell = document.createElement("td");
     const deleteBtn = document.createElement("button");
     const toggleBtn = document.createElement("button");
+
     toggleBtn.setAttribute("data-status", book.isRead);
     toggleBtn.classList.add("toggle-btn");
     deleteBtn.classList.add("delete-btn");
@@ -71,8 +72,10 @@ function renderLibrary() {
     aCell.innerText = `${book.author}`;
     pCell.innerText = `${book.pages}`;
     toggleBtn.innerText = book.isRead ? "have read it" : "haven't read it";
-    toggleBtn.style.backgroundColor = book.isRead ? "#1fd5e0" : "white";
-    toggleBtn.style.color = book.isRead ? "white" : "#1fd5e0";
+
+    book.isRead
+      ? toggleBtn.classList.add("read")
+      : toggleBtn.classList.remove("read");
 
     sCell.appendChild(toggleBtn);
     dCell.appendChild(deleteBtn);
@@ -108,13 +111,11 @@ tbody.addEventListener("click", (e) => {
     const button = e.target.closest("button");
     if (button.dataset.status === "true") {
       button.innerText = "haven't read it";
-      button.style.backgroundColor = "white";
-      button.style.color = "#1fd5e0";
+      button.classList.remove("read");
       button.dataset.status = false;
     } else {
       button.innerText = "have read it";
-      button.style.backgroundColor = "#1fd5e0";
-      button.style.color = "white";
+      button.classList.add("read");
       button.dataset.status = true;
     }
   }

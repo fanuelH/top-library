@@ -76,4 +76,16 @@ function renderLibrary() {
   }
 }
 
+modal.addEventListener("click", (e) => {
+  const dialogDimension = modal.getBoundingClientRect();
+  if (
+    e.clientX < dialogDimension.left ||
+    e.clientX > dialogDimension.right ||
+    e.clientY > dialogDimension.bottom ||
+    e.clientY < dialogDimension.top
+  ) {
+    modal.close();
+  }
+});
+
 renderLibrary();

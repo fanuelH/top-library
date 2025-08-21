@@ -80,6 +80,19 @@ function renderLibrary() {
     tRow.append(iCell, tCell, aCell, pCell, sCell, dCell);
     tbody.appendChild(tRow);
   }
+
+  const coloredBtns = document.querySelectorAll(".toggle-btn");
+  coloredBtns.forEach((btn) => {
+    if (btn.innerText === "have read it") {
+      btn.innerText = "haven't read it";
+      btn.style.backgroundColor = "yellow";
+      btn.style.color = "green";
+    } else {
+      btn.style.backgroundColor = "green";
+      btn.innerText = "have read it";
+      btn.style.color = "white";
+    }
+  });
 }
 
 modal.addEventListener("click", (e) => {

@@ -90,3 +90,14 @@ form {
 section {
   margin: 0.5em;
 }
+
+.delete-btn {
+  color: white;
+  background-color: red;
+}
+
+.delete-btn:hover {
+  color: red;
+  background-color: #fff;
+  border: 1px solid red;
+}

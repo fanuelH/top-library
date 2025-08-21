@@ -59,14 +59,19 @@ function renderLibrary() {
     const aCell = document.createElement("td");
     const pCell = document.createElement("td");
     const sCell = document.createElement("td");
+    const dCell = document.createElement("td");
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("delete-btn");
 
     iCell.innerText = `${book.id}`;
     tCell.innerText = `${book.title}`;
     aCell.innerText = `${book.author}`;
     pCell.innerText = `${book.pages}`;
     sCell.innerText = `${book.isRead}`;
+    dCell.appendChild(deleteBtn);
+    deleteBtn.innerText = `delete`;
 
-    tRow.append(iCell, tCell, aCell, pCell, sCell);
+    tRow.append(iCell, tCell, aCell, pCell, sCell, dCell);
     tbody.appendChild(tRow);
   }
 }

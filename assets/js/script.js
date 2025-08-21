@@ -112,11 +112,11 @@ tbody.addEventListener("click", (e) => {
     if (button.dataset.status === "true") {
       button.innerText = "haven't read it";
       button.classList.remove("read");
-      button.dataset.status = false;
+      button.dataset.status = "false";
     } else {
       button.innerText = "have read it";
       button.classList.add("read");
-      button.dataset.status = true;
+      button.dataset.status = "true";
     }
   }
 });

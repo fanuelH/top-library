@@ -108,6 +108,11 @@ tbody.addEventListener("click", (e) => {
     renderLibrary();
   }
   if (e.target.classList.contains("toggle-btn")) {
+    const row = e.target.closest("tr");
+    const id = row.dataset.id;
+    const myBook = myLibrary.find((book) => book.id === id);
+    myBook.isRead = !myBook.isRead;
+
     const button = e.target.closest("button");
     if (button.dataset.status === "true") {
       button.innerText = "haven't read it";

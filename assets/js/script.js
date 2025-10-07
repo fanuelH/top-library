@@ -9,41 +9,44 @@ const pagesData = document.querySelector("#pages");
 
 let myLibrary = [];
 
-function Book(id, title, author, pages, isRead) {
-  this.id = id;
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
+class Book {
+  constructor(id, title, author, pages, isRead) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+  }
+
+  addBookToLibrary(title, author, pages, status) {
+    const id = crypto.randomUUID();
+    const isRead = status;
+    let book = new Book(id, title, author, pages, isRead);
+    myLibrary.push(book);
+  }
 }
 
-function addBookToLibrary(title, author, pages, status) {
-  const id = crypto.randomUUID();
-  const isRead = status;
-  let book = new Book(id, title, author, pages, isRead);
-  myLibrary.push(book);
-}
-
+let b = new Book();
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  addBookToLibrary(titleData.value, authorData.value, pagesData.value);
+  b.addBookToLibrary(titleData.value, authorData.value, pagesData.value);
   renderLibrary();
   form.reset();
   modal.close();
 });
 
-addBookToLibrary("The 48 Laws of Human", "Robert Greene", 606, true);
-addBookToLibrary("The Art Of War", "Sun Tzu", 306, false);
-addBookToLibrary("1984", "George Orwell", 328, true);
-addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, false);
-addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", 180, true);
-addBookToLibrary("Moby-Dick", "Herman Melville", 635, false);
-addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, true);
-addBookToLibrary("The Catcher in the Rye", "J.D. Salinger", 277, false);
-addBookToLibrary("Brave New World", "Aldous Huxley", 311, true);
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, false);
-addBookToLibrary("Crime and Punishment", "Fyodor Dostoevsky", 671, true);
-addBookToLibrary("The Alchemist", "Paulo Coelho", 208, false);
+b.addBookToLibrary("The 48 Laws of Human", "Robert Greene", 606, true);
+b.addBookToLibrary("The Art Of War", "Sun Tzu", 306, false);
+b.addBookToLibrary("1984", "George Orwell", 328, true);
+b.addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, false);
+b.addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", 180, true);
+b.addBookToLibrary("Moby-Dick", "Herman Melville", 635, false);
+b.addBookToLibrary("Pride and Prejudice", "Jane Austen", 279, true);
+b.addBookToLibrary("The Catcher in the Rye", "J.D. Salinger", 277, false);
+b.addBookToLibrary("Brave New World", "Aldous Huxley", 311, true);
+b.addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, false);
+b.addBookToLibrary("Crime and Punishment", "Fyodor Dostoevsky", 671, true);
+b.addBookToLibrary("The Alchemist", "Paulo Coelho", 208, false);
 
 newBtn.addEventListener("click", () => {
   modal.showModal();
